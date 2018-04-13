@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Urban Geography Trivia</title>
+    <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel='stylesheet' href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="container">
+        <h1>Urban Geography Trivia!</h1>
+        <p>Race against the clock to answer questions related to cities, transportation and urban infrastructure!</p>
+    </div>
+
+    <!-- Button to start game-->
+    <div class="container" id="startGamePanel">
+        <button id="startButton">Start Game!</button>
+    </div>
+
+    <!-- Main in-game panel -->
+    <div class="container" id="currentQuestionPanel">
+        <p>Time remaining: <span id="timeRemaining"></span> seconds</p>
+
+        <!-- Current question and possible choices-->
+        <p id="currentQuestion">Current Question Goes Here</p>
+        <ol>
+            <li id="option1">First Answer</li>
+            <li id="option2">Second Answer</li>
+            <li id="option3">Third Answer</li>
+            <li id="option4">Fourth Answer</li>
+        </ol>
+        <div class="container" id="gifPanel">
+            <!-- GIF of the correct answer goes here -->
+        </div>
+    </div>
+
+    <!-- Display results at the end of the game -->
+    <div class="container" id="gameResultsPanel">
+        <p> All done, here's how you did:</p>
+        <ul>
+            <li>Correct Answers: <span id="correctAnswers"></span></li>
+            <li>Incorrect Answers: <span id="incorrectAnswers"></span></li>
+            <li>Unanswered Questions: <span id="unansweredQuestions"></span></li>
+        </ul>
+
+        <button id="restartButton">Restart Game?</button>
+    </div>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
