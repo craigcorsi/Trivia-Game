@@ -1,3 +1,12 @@
+// todo list
+
+// Add timer event that ticks downward indefinitely
+
+// add events to stop the timer when the timer reaches 0
+
+// add events to stop the timer when a question is guessed
+
+
 currentGame = {
     inGame: false,
     inResults: false,
@@ -40,7 +49,43 @@ currentGame = {
         ]
     ],
 
+    proceed(choice) {
+        // load next question if there is one
+        if (this.questionNumber < this.questionBank.length - 1) {
+            this.questionNumber++;
+            this.loadQuestion(this.questionNumber);
+        // otherwise end the game
+        } else {
+            this.endGame();
+        }
+    },
+
     loadQuestion(i) {
+        var timeLeft = 10;
+        console.log(timeLeft);
+        $('#timeRemaining').html(timeLeft);
+
+        function tick () {
+            timeLeft--;
+            console.log(timeLeft);
+            $('#timeRemaining').html(timeLeft);
+        }
+
+        var timer = setInterval(tick, 1000);
+
+        // clear timer and proceed
+        function timesup () {
+            clearInterval(timer);
+            currentGame.numberUnanswered++;
+            currentGame.proceed();
+        }
+
+        // After 10 seconds, call time-up function
+        setTimeout(timesup, 10000);
+
+        // when an option is clicked, clear timer
+
+
         $('#currentQuestion').html(this.questionBank[i][0]);
         $('#option0').html(this.questionBank[i][1][0]);
         $('#option1').html(this.questionBank[i][1][1]);
@@ -99,15 +144,17 @@ currentGame = {
             this.numberIncorrect++;
         }
 
-        console.log(this);
-        // load next question if there is one
-        if (this.questionNumber < this.questionBank.length - 1) {
-            this.questionNumber++;
-            this.loadQuestion(this.questionNumber);
-        // otherwise end the game
-        } else {
-            this.endGame();
-        }
+        this.proceed();
+    }
+}
+
+// stop all running Timeouts (when a button is clicked)
+function stopAllTimeouts()
+{
+    var id = window.setTimeout(null,0);
+    while (id--) 
+    {
+        window.clearTimeout(id);
     }
 }
 
@@ -119,11 +166,12 @@ $(document).ready(function() {
     $('#optionList').on('click', '.option', function( event ) {
         var idGet = $(this).attr('id');
         var index = idGet[idGet.length - 1];
-        currentGame.answerQuestion(index);
+        stopAllTimeouts();
+        currentGame.answerQuestion(index); 
     })
 
     // When either the 'Start Game' or 'Restart Game' buttons are clicked, start the game
     $('button').click(function() {
         currentGame.startGame();
-        })
+    })
 });
