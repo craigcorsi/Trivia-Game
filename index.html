@@ -7,14 +7,15 @@
     <title>Urban Geography Trivia</title>
     <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel='stylesheet' href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <!-- Header -->
-    <div class="container">
+    <header class="container">
         <h1>Urban Geography Trivia!</h1>
         <p>Race against the clock to answer questions related to cities, transportation and urban infrastructure!</p>
-    </div>
+    </header>
 
     <!-- Button to start game-->
     <div class="container" id="startGamePanel">
@@ -27,15 +28,16 @@
 
         <!-- Current question and possible choices-->
         <p id="currentQuestion">Current Question Goes Here</p>
-        <ol>
-            <li id="option1">First Answer</li>
-            <li id="option2">Second Answer</li>
-            <li id="option3">Third Answer</li>
-            <li id="option4">Fourth Answer</li>
+        <ol id="optionList">
+            <li class="option" id="option0">First Answer</li>
+            <li class="option" id="option1">Second Answer</li>
+            <li class="option" id="option2">Third Answer</li>
+            <li class="option" id="option3">Fourth Answer</li>
         </ol>
-        <div class="container" id="gifPanel">
+    </div>
+
+    <div class="container" id="gifPanel">
             <!-- GIF of the correct answer goes here -->
-        </div>
     </div>
 
     <!-- Display results at the end of the game -->
@@ -52,5 +54,6 @@
 
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
